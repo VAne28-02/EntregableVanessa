@@ -1,7 +1,13 @@
 <?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+    exit();
+}
 require_once './CONTROLLER/ClienteController.php';
 require_once './CONTROLLER/ProyectoController.php';
 require_once './CONTROLLER/AsignacionController.php';
+
 
 
 $accion = isset($_GET['accion']) ? $_GET['accion'] : 'cargarclientes';
