@@ -1,5 +1,4 @@
 <?php
-// LOGIN SYSTEM BÁSICO
 session_start();
 
 require_once './CONFIG/DB.php';
@@ -12,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "SELECT * FROM usuarios WHERE usuario = :usu AND clave = :cla";
     $ps = $cn->prepare($sql);
     $ps->bindParam(':usu', $usuario);
-    $ps->bindParam(':cla', $clave); // En producción, usa hash (password_hash)
+    $ps->bindParam(':cla', $clave); 
     $ps->execute();
     $user = $ps->fetch();
 
@@ -25,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<!-- LOGIN VIEW -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
